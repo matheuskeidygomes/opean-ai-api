@@ -11,6 +11,6 @@ export async function callTextModelAI(message: string) {
         //n: 2,                                                 // Number of results to return
     });
     //console.log(responseAI.data);
-    const messageAI = responseAI.data.choices[0].text?.trim();  // Get the AI response in text format
-    return messageAI;
+    const responseMessageAI = responseAI.data.choices[0].text?.trim();  // Get the AI response in text format
+    return responseMessageAI;
 }
