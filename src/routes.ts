@@ -1,5 +1,6 @@
 import { Router, Request, Response } from 'express';
 import { callTextModelAI } from './openAI';
+import say from 'say';
 
 export const routes = Router();
 
@@ -11,8 +12,10 @@ routes.post('/ai/text', async (req: Request, res: Response) => {
     const { userMessage } = req.body;
     try {
         const responseMessageAI = await callTextModelAI(userMessage);
-        return res.json({ robot: responseMessageAI });
+        say.speak(responseMessageAI!, 'Karen', 1.5);                       // Speak the AI response ('txt', 'voice', 'speed')    
+        return res.json({ Anne: responseMessageAI });
     } catch (error: any) {
         console.log({ error: error.message });
     }
 });
+
