@@ -9,9 +9,9 @@ routes.get("/", (req: Request, res: Response) => {
 });
 
 routes.post('/ai/text', async (req: Request, res: Response) => {
-    const { userMessage } = req.body;
+    const { message } = req.body;
     try {
-        const responseMessageAI = await callTextModelAI(userMessage);
+        const responseMessageAI = await callTextModelAI(message);
         say.speak(responseMessageAI!, 'Karen', 1.5);                       // Speak the AI response ('txt', 'voice', 'speed')    
         return res.json({ Anne: responseMessageAI });
     } catch (error: any) {
